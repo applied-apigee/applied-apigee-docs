@@ -2,8 +2,7 @@ language: node_js
 node_js:
 - node
 install:
-- curl -sSL https://github.com/googlecodelabs/tools/releases/download/v2.2.0/claat-linux-amd64 -o /usr/bin/claat
-- chmod +x /usr/bin/claat
+- go get github.com/googlecodelabs/tools/claat
 - npm install
 - npm run build
 script:
