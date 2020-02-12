@@ -1,0 +1,102 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Applied Apigee</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="applied-apigee"
+                  title="Applied Apigee"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Problem Statement" duration="0">
+        <p>Miren and Yuriy own a Pizza Shop.</p>
+<p>Currently, orders are placed by telephone and recorded on paper.</p>
+<p>Once cooked by Yuriy, pizzas are delivered by Miren one order at a time.</p>
+<p>Miren and Yuriy recently won the prestigous ‘Pizza of the Year&#39; award. They are expecting 10x demand.</p>
+<p>They have hired Developer Dane to help with their Digital Transformation. Dane would like to use Apigee and Google Cloud Platform.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Discovery" duration="0">
+        <p>The Apigee Customer Success team run a workshop with Alice, Bob and Carol to understand how APIs, Apps, Analytics and a Cloud Strategy can transform their business.</p>
+<p>It took two packs of post-its, but the team identify a minimum viable business outcome that can be implemented and tested to prove the value of the program.</p>
+<p>They predict their local newspaper headline for the following year:</p>
+<p><em>Local Pizza shop wins award AGAIN after serving their 1000th Order!</em></p>
+<p>In order to reach this goal, they identify the following business concerns:</p>
+<ul>
+<li>Our kitchen is too small</li>
+<li>We need more ingredients</li>
+<li>One delivery driver isn&#39;t enough</li>
+</ul>
+<p>The team quickly realises that if they fixed all of these problems tomorrow, their current ordering process couldn&#39;t scale to utilize the new resources.</p>
+<p>By creating an Pizza Orders API, they get the following benefits:</p>
+<ul>
+<li>Enables a mobile app for Delivery Drivers</li>
+<li>Enables order tracking by connecting to a screen in the kitchen</li>
+<li>Allows third party fast food websites to connect to their restaurant</li>
+<li>Analytics can be recorded to help efficiently order ingredients</li>
+<li>Staff shift patterns can be optimized</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Solution Design" duration="0">
+        <p>A Technical Solutions Consultant from the Apigee Customer Success team works with Developer Dane to create a High Level Solution Design and initial scope.</p>
+<pre><code>+-------------+    +-----------+    +-------------+
+| Kitchen App |    | Order App |    | Drivers App |
++-------------+    +-----------+    +-------------+
+         |               |                |
++--------------------------------------------------+
+|                  API Platform                    |
++--------------------------------------------------+
+         |                                |
++------------------+               +---------------+
+| Identity Service |               | Order Service |
++------------------+               +---------------+
+
+</code></pre>
+<p>At this stage, the team do not worry about specific details of this design, but instead look for something they can rapidly prototype and test with real customers.</p>
+<p>They also discuss that the APIs built here can be reused for third-parties.</p>
+<p>However, they do identify the need to integration with the following components in order to follow best practices:</p>
+<ul>
+<li>Developer Portal for third-party onboarding and documentation</li>
+<li>Message Logging to help with customer support</li>
+<li>Monitoring to identify issues in production</li>
+<li>Source Control system for storing coding</li>
+<li>Continuous Integration system to manage the test and deploy pipeline</li>
+<li>An Open ID Connect Compliant Identity Provider</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
