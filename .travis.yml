@@ -8,7 +8,7 @@ install:
 script:
 - echo "Job Complete"
 deploy:
-  local_dir: target/applied-apigee/
+  local_dir: ./target/applied-apigee/
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
