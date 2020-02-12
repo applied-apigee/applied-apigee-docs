@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-02-12T17:28:06Z",
+  "updated": "2020-02-12T17:42:11Z",
   "id": "applied-apigee",
   "duration": 0,
   "title": "Applied Apigee",
@@ -13,5 +13,6 @@
   "status": null,
   "category": null,
   "tags": [],
+  "feedback": "https://github.com/applied-apigee/applied-apigee-docs/issues",
   "url": "applied-apigee"
 }
