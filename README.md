@@ -1,5 +1,7 @@
 # Applied Apigee Documentation 
 
+View [Codelab](https://applied-apigee.github.io/applied-apigee-docs)
+
 ## Description
 
 An example of a complete API Management Project using the Apigee Platform.
