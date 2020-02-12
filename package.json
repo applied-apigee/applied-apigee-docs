@@ -1,0 +1,27 @@
+{
+  "name": "applied-apigee-docs",
+  "version": "0.0.1",
+  "description": "An example of a complete API Management Project using the Apigee Platform.",
+  "scripts": {
+    "build": "mkdir -p target && cat chapters/* > target/lab.md && claat export -o target/ target/lab.md",
+    "clean": "rm -rf target/ applied-apigee/",
+    "serve": "npx http-server target/applied-apigee/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/applied-apigee/applied-apigee-docs.git"
+  },
+  "keywords": [
+    "applied",
+    "apigee"
+  ],
+  "author": "LaughingBiscuit",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/applied-apigee/applied-apigee-docs/issues"
+  },
+  "homepage": "https://github.com/applied-apigee/applied-apigee-docs#readme",
+  "dependencies": {
+    "http-server": "^0.12.1"
+  }
+}

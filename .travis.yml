@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+- node
+install:
+- go get github.com/googlecodelabs/tools/claat
+- npm install
+- npm run build
+script:
+- echo "Job Complete"
+deploy:
+  local_dir: ./target/applied-apigee/
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: master
+
