@@ -2,7 +2,7 @@
 
 Miren and Yuriy own a Pizza Shop. 
 
-<img src="./assets/pizzashop.jpg" alt="Restaurant" width="50%"/>
+<img src="./assets/pizzashop.jpg" alt="Restaurant" style="width:50%"/>
 
 Currently, orders are placed by telephone and recorded on paper.
 
