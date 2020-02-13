@@ -2,6 +2,8 @@
 
 Miren and Yuriy own a Pizza Shop. 
 
+![Restaurant](./assets/pizzashop.jpg)
+
 Currently, orders are placed by telephone and recorded on paper.
 
 Once cooked by Yuriy, pizzas are delivered by Miren one order at a time.

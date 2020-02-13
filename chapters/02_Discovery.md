@@ -9,7 +9,7 @@ outcome that can be implemented and tested to prove the value of the program.
 
 They predict their local newspaper headline for the following year:
 
-> *Local Pizza shop wins award AGAIN after serving their 1000th Order!*
+![Headline](./assets/headline.jpg)
 
 In order to reach this goal, they identify the following business concerns:
 
