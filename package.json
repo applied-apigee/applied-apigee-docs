@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "An example of a complete API Management Project using the Apigee Platform.",
   "scripts": {
-    "build": "mkdir -p target && cat chapters/* > target/lab.md && claat export -o target/ target/lab.md",
+    "build": "mkdir -p target && ( cd chapters && cat $(ls | grep .md) > ../target/lab.md ) && cp -r chapters/assets/ target/ && claat export -o target/ target/lab.md",
     "clean": "rm -rf target/ applied-apigee/",
     "serve": "npx http-server target/applied-apigee/"
   },
@@ -25,3 +25,4 @@
     "http-server": "^0.12.1"
   }
 }
+
