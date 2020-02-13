@@ -25,13 +25,13 @@ customers.
 
 They also discuss that the APIs built here can be reused for third-parties.
 
-However, they do identify the need to integration with the following components
+However, they do identify the need to integrate with the following components
 in order to follow best practices:
 
 - Developer Portal for third-party onboarding and documentation
 - Message Logging to help with customer support
 - Monitoring to identify issues in production
-- Source Control system for storing coding
+- Source Control system for storing code and configuration
 - Continuous Integration system to manage the test and deploy pipeline
-- An Open ID Connect Compliant Identity Provider
+- An OpenID Connect Compliant Identity Provider
 
