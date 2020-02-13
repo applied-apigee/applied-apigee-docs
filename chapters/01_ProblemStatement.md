@@ -2,7 +2,6 @@
 
 Miren and Yuriy own a Pizza Shop. 
 
-<img src="./assets/pizzashop.jpg" alt="Restaurant" style="width:50%"/>
 
 Currently, orders are placed by telephone and recorded on paper.
 
@@ -14,3 +13,4 @@ expecting 10x demand.
 They have hired Developer Dane to help with their Digital Transformation. Dane 
 would like to use Apigee and Google Cloud Platform.
 
+<img src="./assets/pizzashop.jpg" alt="Restaurant" style="width:50% !important"/>
