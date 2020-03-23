@@ -86,8 +86,310 @@
 <li>Monitoring to identify issues in production</li>
 <li>Source Control system for storing code and configuration</li>
 <li>Continuous Integration system to manage the test and deploy pipeline</li>
-<li>An OpenID Connect Compliant Identity Provider</li>
+<li>An OpenID Connect Compliant Identity ProviderBacklog</li>
 </ul>
+<p>Together, the team build a backlog of stories.</p>
+<ul>
+<li>Provision Apigee organization and environments</li>
+<li>Set up roles and decide onboarding process</li>
+<li>Document development environment setup</li>
+<li>Create design standards and light governance process</li>
+<li>Build proxy template with error handling, cors, monitoring and logging.</li>
+<li>Setup build, test and deploy pipeline (inc. notifications)</li>
+<li>Create mocks for backend services and mock client</li>
+<li>Build OpenAPI Specifications</li>
+<li>Mediate request payload for backends</li>
+<li>Set traffic limits</li>
+<li>Implement response caching</li>
+<li>Implement Client Credentials flow</li>
+<li>Implement Authorization Code flow</li>
+<li>Implement Refresh Token flow</li>
+<li>Implement Access Token validation</li>
+<li>Implement southbound security</li>
+<li>Add custom analytics</li>
+<li>Create custom analytics dashboards</li>
+<li>Orchestration (enrich data)</li>
+<li>Performance benchmarking</li>
+<li>Go live monitoring, checklist and runbook</li>
+</ul>
+<p>Future</p>
+<ul>
+<li>Developer Portal</li>
+<li>Quota for JustEat</li>
+<li>SSO</li>
+<li>Hybrid</li>
+<li>Monetization</li>
+<li>Black Friday readiness</li>
+</ul>
+<p>These stories will be broken down into work items by the development team, estimated and assigned to sprints.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Orgs, Environments and Roles" duration="0">
+        <h2 is-upgraded>Organizations and Environments</h2>
+<p>The team would like to structure their environments such that they ensure increasing quality as code progresses to the production environment. However a heavy governance structure may stifle innovation and speed to value. Here is the structure that they agree on.</p>
+<table>
+<tr></tr>
+<tr><td colspan="1" rowspan="1"><p>dev		</p>
+</td><td colspan="1" rowspan="1"><p>pizza-nonprod</p>
+</td><td colspan="1" rowspan="1"><p>mock		</p>
+</td><td colspan="1" rowspan="1"><p>@all		</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>intg		</p>
+</td><td colspan="1" rowspan="1"><p>pizza-nonprod</p>
+</td><td colspan="1" rowspan="1"><p>intg		</p>
+</td><td colspan="1" rowspan="1"><p>@all not @mock</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>perf		</p>
+</td><td colspan="1" rowspan="1"><p>pizza-nonprod</p>
+</td><td colspan="1" rowspan="1"><p>mock/perf	</p>
+</td><td colspan="1" rowspan="1"><p>@benchmark	</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>uat		</p>
+</td><td colspan="1" rowspan="1"><p>pizza-nonprod</p>
+</td><td colspan="1" rowspan="1"><p>uat		</p>
+</td><td colspan="1" rowspan="1"><p>@all		</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>preprod	</p>
+</td><td colspan="1" rowspan="1"><p>pizza-prod 	</p>
+</td><td colspan="1" rowspan="1"><p>prod		</p>
+</td><td colspan="1" rowspan="1"><p>@smoke	</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>sandbox	</p>
+</td><td colspan="1" rowspan="1"><p>pizza-prod 	</p>
+</td><td colspan="1" rowspan="1"><p>mock		</p>
+</td><td colspan="1" rowspan="1"><p>@all not @mock</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>prod		</p>
+</td><td colspan="1" rowspan="1"><p>pizza-prod 	</p>
+</td><td colspan="1" rowspan="1"><p>prod		</p>
+</td><td colspan="1" rowspan="1"><p>@smoke	</p>
+</td></tr>
+</table>
+<h2 is-upgraded>Traffic Isolation</h2>
+<p>The team would like to use the SaaS version of Apigee Edge to reduce their total cost of ownership, however they are aware that means using some shared infrastructure.</p>
+<p>They would like to ensure that their performance tests are physically isolated so that any downtime caused won&#39;t affect other environments. In addition they would ike to isolate ther production environment from non-prod environmments.</p>
+<p>They learn that it is possible to isolate an organisation or environment by applying a Traffic Isolation Pack. The team requests two TIPs for prod and perf.</p>
+<h2 is-upgraded>Multi-Region Support</h2>
+<p>TODO Adding an addition region TODO Leaving the Google backbone</p>
+<h2 is-upgraded>Role Based Access Control</h2>
+<p>In addition to physical separation of runtimes, we must separate users.</p>
+<ul>
+<li>We don&#39;t want an intern accessing production</li>
+<li>We only want CI/CD processes to deploy to all envs</li>
+<li>We only want the ops team to trace in production</li>
+<li>We want business users to only see Analytics</li>
+</ul>
+<p>TODO how to do it</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Development Environment Setup" duration="0">
+        <p>The team are happy to learn about Apigee using the UI, but they want to be able to use the tools that they are used to. These include source control, their favourite IDE and a continuous integration system. They set up the following:</p>
+<h2 is-upgraded>Editor</h2>
+<p>After learning evaluating VS Code, vim, Eclipse and Notepad++, they decide to use VS Code. One of the team refuses and continues to use vim, but that is ok!</p>
+<h2 is-upgraded>Build tools</h2>
+<p>They learn that interaction with Apigee is all done through the Management API. Whilst they could use curl or Postman directly, they would like something a bit higher level to speed up the development process.</p>
+<p>After evaluating apigeetool and Maven, they choose Maven as it has the largest community and the team are already familiar with it.</p>
+<h2 is-upgraded>Testing tools</h2>
+<p>Whilst most Apigee policies are XML configuration, some callouts contain custom Java, Javascript or Python. The team decide that they will write unit tests in the same language as the custom code that they are writing.</p>
+<p>They decided that the following:</p>
+<ul>
+<li>First, they will try to configure out of the box policies</li>
+<li>If they have a requirement that requires programming, they will use Javascript</li>
+<li>If they have a complex requirement that requires high performance, they will use Java as this just perform the best on the Apigee SaaS platform</li>
+</ul>
+<h2 is-upgraded>Documentation</h2>
+<p>The team decide to document their project in markdown using Plant UML diagrams. Ideally they would collaborate with GSuite or Confluence, but this approach will allow them to version docs alongside their code.</p>
+<h2 is-upgraded>Debugging</h2>
+<p>Apigee Trace Third party logging Analytics</p>
+<p>TODO video of how to actually set it up</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Technical Standards" duration="0">
+        <h2 is-upgraded>Standards</h2>
+<ul>
+<li>rest</li>
+<li>oauth</li>
+<li>cors</li>
+<li>mtls</li>
+<li>jwt</li>
+<li>naming conventions</li>
+<li>repo structure</li>
+</ul>
+<p>TODO refer to community article on shared flows</p>
+<h2 is-upgraded>Templating</h2>
+<p>Here is a sample proxy template, used by the team</p>
+<h2 is-upgraded>Shared Flows</h2>
+<p>Some functionality such as logging, CORS and token validation is common amongst all proxies. These are implemented in the following shared flows.</p>
+<h2 is-upgraded>Automation</h2>
+<ul>
+<li>linting</li>
+<li>unit testing</li>
+<li>intg test</li>
+<li>perf benchmarking</li>
+<li>pipeline</li>
+</ul>
+<p>shell example, then videos for:</p>
+<p>Jenkins Setup GitLab Setup GCP Build Setup</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Mocking" duration="0">
+        <h2 is-upgraded>Static Mocks</h2>
+<p>The simplest way that the team can mock an endpoint, is to use an Assign Message policy.</p>
+<p>TODO video</p>
+<p>This is great for one or two responses, but it is possible that addition logic will be required to handle multiple responses, simulate latency and add error handling. To easily implement this, the team implement a Hosted Targets based mock using the <code>apimocker</code> library.</p>
+<p>TODO video</p>
+<p>Many pieces of test data are provided to provide a lifelike experience for developers to code against.</p>
+<h2 is-upgraded>Specification-based Mocking</h2>
+<p>It is possible to derive dummy responses from Open API Specifications. The quality of this data is only as good as the specification, and typically contains values such as <code>&#34;Sample String&#34;</code>.</p>
+<p>TODO video</p>
+<p>At the time of writing, these mocks are used as a short term solution when specifications are complex and mocks require a low cost of maintenance.</p>
+<h2 is-upgraded>Dynamic Mocks</h2>
+<p>If the team want to provide the most realistic experience, then they must implement dynamic mocks that allow data to be persisted.</p>
+<p>In order to reduce cost of maintenance, this should use the same code based as the real backend. This way, the team don&#39;t have to maintain two separate code bases.</p>
+<p>On the other hand, this still requires a dedicated team and more infrastructure to be maintained, so should only be implemented for premium consumers.</p>
+<p>TODO video</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="API Design" duration="0">
+        <p>Design First - what does it mean?</p>
+<p>Pragmatic RESTful API Design</p>
+<p>Leveraging Existing Standards</p>
+<p>What can I do with an OpenAPI Specification?</p>
+<ul>
+<li>mocks</li>
+<li>server skeleton</li>
+<li>client skeleton</li>
+<li>api skeleton</li>
+<li>dev portal</li>
+</ul>
+<p>How should I version my API specs?</p>
+<p>Dev state vs Prod</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Mediation" duration="0">
+        <h2 is-upgraded>XML and JSON Conversion</h2>
+<ul>
+<li>datatype differences</li>
+</ul>
+<h2 is-upgraded>XSLT</h2>
+<h2 is-upgraded>JS Mapping</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Traffic Management" duration="0">
+        <h2 is-upgraded>Spike Arrests</h2>
+<h2 is-upgraded>Quotas</h2>
+<h2 is-upgraded>Benchmarking for Requirements Generation</h2>
+<h2 is-upgraded>When to implement in the gateway and when not to</h2>
+<h2 is-upgraded>Platform provisions</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Caching" duration="0">
+        <h2 is-upgraded>Improving GET response times</h2>
+<h2 is-upgraded>Caching single values</h2>
+<h2 is-upgraded>How does it work?</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Identity" duration="0">
+        <ul>
+<li>What is Apigees role in Identity Management</li>
+</ul>
+<h2 is-upgraded>All in Apigee, callout for user validation</h2>
+<ul>
+<li>Client Creds</li>
+<li>Password Grant</li>
+<li>Auth Code</li>
+</ul>
+<h2 is-upgraded>Clients in Apigee, OIDC IDP</h2>
+<ul>
+<li>Client Creds</li>
+<li>Password Grant</li>
+<li>Auth Code</li>
+</ul>
+<h2 is-upgraded>Delegate all to Third Party</h2>
+<ul>
+<li>Client Creds</li>
+<li>Password Grant</li>
+<li>Auth Code</li>
+</ul>
+<h2 is-upgraded>More Interesting Grant Types</h2>
+<h2 is-upgraded>Chosen Implementation</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Analytics" duration="0">
+        <h2 is-upgraded>Exploring Standard Dashboard</h2>
+<h2 is-upgraded>Collecting Custom Statistics</h2>
+<h2 is-upgraded>Creating Custom Dashboards</h2>
+<h2 is-upgraded>Exporting Analytics</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Orchestration" duration="0">
+        <h2 is-upgraded>Service Callout</h2>
+<h2 is-upgraded>Javascript Callout</h2>
+<h2 is-upgraded>Hosted Target</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Benchmarking" duration="0">
+        <h2 is-upgraded>ab</h2>
+<h2 is-upgraded>locust</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Portal" duration="0">
+        <h2 is-upgraded>555 Rule</h2>
+<h2 is-upgraded>Social Content</h2>
+<h2 is-upgraded>Integrated Portal + Automation</h2>
+<h2 is-upgraded>Docker D8 + Automation</h2>
+<h2 is-upgraded>Drupal Hosting Options</h2>
+<h2 is-upgraded>Drupal Customisation, Development and Partnerships</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Go Live Checklist" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Proxy Review" duration="0">
+        <ul>
+<li>antipattern checks</li>
+<li>standards checks</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Operations and Maintenance" duration="0">
+        <h2 is-upgraded>Monitoring</h2>
+<h2 is-upgraded>Auditing</h2>
+<h2 is-upgraded>Logging</h2>
+<h2 is-upgraded>Upgrading</h2>
+<h2 is-upgraded>Support and Platform Status</h2>
 
 
       </google-codelab-step>
