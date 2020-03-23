@@ -10,9 +10,16 @@
 - naming conventions
 - repo structure
 
-### Templates
+TODO refer to community article on shared flows
 
-- code base
+### Templating
+
+Here is a sample proxy template, used by the team
+
+### Shared Flows
+
+Some functionality such as logging, CORS and token validation is common amongst
+all proxies. These are implemented in the following shared flows.
 
 ### Automation
 
@@ -21,3 +28,10 @@
 - intg test
 - perf benchmarking
 - pipeline
+
+shell example, then videos for:
+
+Jenkins Setup 
+GitLab Setup
+GCP Build Setup
+

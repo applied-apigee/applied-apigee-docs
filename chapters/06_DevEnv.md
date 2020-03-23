@@ -1,48 +1,47 @@
 ## Development Environment Setup
 
-Here are some examples of some typical development environment setups
+The team are happy to learn about Apigee using the UI, but they want to be able
+to use the tools that they are used to. These include source control, their 
+favourite IDE and a continuous integration system. They set up the following:
 
-### UI Only
+### Editor
 
-Tools:
-- Apigee Development UI
-- Apigee Trace
-- Postwoman
+After learning evaluating VS Code, vim, Eclipse and Notepad++, they decide
+to use VS Code. One of the team refuses and continues to use vim, but that is
+ok!
 
-Pros: Drag and Drop Capability in the UI
-Cons: No automated testing.
+### Build tools
 
-### Java Based
+They learn that interaction with Apigee is all done through the Management API. Whilst
+they could use curl or Postman directly, they would like something a bit higher
+level to speed up the development process.
 
-Tools:
-- IntelliJ
-- Maven Deploy Plugin
-- Maven Config Plugin
-- JMeter
-- git
+After evaluating apigeetool and Maven, they choose Maven as it has the largest community
+and the team are already familiar with it.
 
-### Node JS Based
+### Testing tools
 
-Tools:
-- Visual Studio Code
-- apigeetool
-- apickli
-- git
+Whilst most Apigee policies are XML configuration, some callouts contain custom
+Java, Javascript or Python. The team decide that they will write unit tests in the
+same language as the custom code that they are writing.
 
-### Superior
+They decided that the following:
 
-Tools:
-- vim
-- curl
-- POSIX shell
-- git
+- First, they will try to configure out of the box policies
+- If they have a requirement that requires programming, they will use Javascript
+- If they have a complex requirement that requires high performance, they will use Java
+as this just perform the best on the Apigee SaaS platform
 
-### Selected
+### Documentation
 
-Tools
-- git
-- any editor
-- apigeetool
-- curl
-- markdown
+The team decide to document their project in markdown using Plant UML diagrams. Ideally
+they would collaborate with GSuite or Confluence, but this approach will allow them to
+version docs alongside their code.
 
+### Debugging
+
+Apigee Trace
+Third party logging
+Analytics
+
+TODO video of how to actually set it up

@@ -34,4 +34,3 @@ in order to follow best practices:
 - Source Control system for storing code and configuration
 - Continuous Integration system to manage the test and deploy pipeline
 - An OpenID Connect Compliant Identity Provider
-

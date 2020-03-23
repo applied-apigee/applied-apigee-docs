@@ -19,13 +19,20 @@ is the structure that they agree on.
 
 ### Traffic Isolation
 
-Apigee Edge in the cloud is multitenant and uses shared infrastructure. 
+The team would like to use the SaaS version of Apigee Edge to reduce their total
+cost of ownership, however they are aware that means using some shared infrastructure.
 
-It is possible to isolate an organisation or environment by applying a 
-Traffic Isolation Pack.
+They would like to ensure that their performance tests are physically isolated so
+that any downtime caused won't affect other environments. In addition they would ike
+to isolate ther production environment from non-prod environmments.
 
-The team choose to isolate the perf and prod environments to ensure that
-downtime does affect the runtime of other environments.
+They learn that it is possible to isolate an organisation or environment by applying a 
+Traffic Isolation Pack. The team requests two TIPs for prod and perf.
+
+### Multi-Region Support
+
+TODO Adding an addition region
+TODO Leaving the Google backbone
 
 ### Role Based Access Control
 
@@ -36,4 +43,4 @@ In addition to physical separation of runtimes, we must separate users.
 - We only want the ops team to trace in production
 - We want business users to only see Analytics
 
-
+TODO how to do it
